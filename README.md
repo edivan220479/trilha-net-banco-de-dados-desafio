@@ -45,47 +45,92 @@ Você deverá criar diversas consultas, com o objetivo de retornar os dados a se
 ## 1 - Buscar o nome e ano dos filmes
 
 ![Exercicio 1](Imagens/1.png)
+select
+Nome,
+Ano
+from Filmes 
 
 ## 2 - Buscar o nome e ano dos filmes, ordenados por ordem crescente pelo ano
 
 ![Exercicio 2](Imagens/2.png)
+SELECT
+nome, ano 
+FROM filmes ORDER BY ano ASC
 
 ## 3 - Buscar pelo filme de volta para o futuro, trazendo o nome, ano e a duração
 
 ![Exercicio 3](Imagens/3.png)
+SELECT 
+Nome, 
+Ano, 
+duracao FROM filmes WHERE Nome = 'De Volta para o Futuro'
 
 ## 4 - Buscar os filmes lançados em 1997
 
 ![Exercicio 4](Imagens/4.png)
+SELECT
+Nome FROM filmes WHERE ano = 1997
 
 ## 5 - Buscar os filmes lançados APÓS o ano 2000
 
 ![Exercicio 5](Imagens/5.png)
+SELECT
+Nome FROM filmes WHERE ano > 2000
 
 ## 6 - Buscar os filmes com a duracao maior que 100 e menor que 150, ordenando pela duracao em ordem crescente
 
 ![Exercicio 6](Imagens/6.png)
+SELECT
+Nome, Duracao FROM filmes
+WHERE duracao > 100 AND duracao < 150 ORDER BY duracao ASC
 
 ## 7 - Buscar a quantidade de filmes lançadas no ano, agrupando por ano, ordenando pela duracao em ordem decrescente
 
 ![Exercicio 7](Imagens/7.png)
+SELECT 
+ano, COUNT(*) AS Quantidade 
+FROM filmes GROUP BY ano ORDER BY Quantidade DESC
 
 ## 8 - Buscar os Atores do gênero masculino, retornando o PrimeiroNome, UltimoNome
 
 ![Exercicio 8](Imagens/8.png)
+SELECT 
+PrimeiroNome, UltimoNome, Genero 
+FROM Atores WHERE Genero = 'M'
 
 ## 9 - Buscar os Atores do gênero feminino, retornando o PrimeiroNome, UltimoNome, e ordenando pelo PrimeiroNome
 
 ![Exercicio 9](Imagens/9.png)
+SELECT 
+PrimeiroNome, UltimoNome, Genero 
+FROM Atores WHERE Genero = 'F'
+ORDER BY PrimeiroNome
 
 ## 10 - Buscar o nome do filme e o gênero
 
 ![Exercicio 10](Imagens/10.png)
+CREATE TABLE FilmesGenero(
+Id int PRIMARY KEY IDENTITY(1, 1)NOT NULL,
+Id int,
+IdGenero int NULL,
+IdFilme datetime,
+
+CONSTRAINT FK_FilmesGeneros_Filmes FOREIGN KEY(IdFilme)
+REFERENCES Filmes(Id)
 
 ## 11 - Buscar o nome do filme e o gênero do tipo "Mistério"
 
 ![Exercicio 11](Imagens/11.png)
+SELECT 
+filme,
+genero FROM filmes WHERE genero = 'Mistério'
 
 ## 12 - Buscar o nome do filme e os atores, trazendo o PrimeiroNome, UltimoNome e seu Papel
 
 ![Exercicio 12](Imagens/12.png)
+SELECT 
+Filmes,
+Atores, 
+Papel
+genero FROM filmes WHERE genero 
+ORDER BY Papel
